@@ -1,0 +1,42 @@
+interface Filterable {
+    void applyFilter(String filterType);
+    void resetFilter();
+}
+
+class ImageProcessor implements Filterable {
+    @Override
+    public void applyFilter(String filterType) {
+        System.out.println("Applying image filter: " + filterType + " (e.g., blur, sharpen, grayscale)");
+    }
+    
+    @Override
+    public void resetFilter() {
+        System.out.println("Image filters reset → original image restored");
+    }
+}
+
+class DataAnalyzer implements Filterable {
+    @Override
+    public void applyFilter(String filterType) {
+        System.out.println("Applying data filter: " + filterType + " (e.g., remove outliers, smooth, normalize)");
+    }
+    
+    @Override
+    public void resetFilter() {
+        System.out.println("Data filters reset → raw dataset restored");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Filterable img = new ImageProcessor();
+        img.applyFilter("Grayscale");
+        img.resetFilter();
+        
+        System.out.println();
+        
+        Filterable data = new DataAnalyzer();
+        data.applyFilter("Remove Outliers");
+        data.resetFilter();
+    }
+}
