@@ -1,0 +1,33 @@
+class Bank {
+    // final variable - can be initialized only once (in constructor or at declaration)
+    private final double interestRate;
+    
+    Bank(double rate) {
+        this.interestRate = rate;   // set once during object creation
+    }
+    
+    double calculateInterest(double amount) {
+        return amount * (interestRate / 100);
+    }
+    
+    void displayRate() {
+        System.out.println("Fixed Interest Rate: " + interestRate + "%");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Bank b1 = new Bank(6.5);   // SBI-like rate
+        Bank b2 = new Bank(7.8);   // HDFC-like rate
+        
+        double amount = 100000;
+        
+        System.out.println("For amount ₹" + amount);
+        b1.displayRate();
+        System.out.println("Interest = ₹" + b1.calculateInterest(amount));
+        System.out.println("-----------------------------");
+        
+        b2.displayRate();
+        System.out.println("Interest = ₹" + b2.calculateInterest(amount));
+    }
+}
