@@ -1,0 +1,40 @@
+abstract class Payment {
+    abstract void pay(double amount);
+}
+
+class CreditCardPayment extends Payment {
+    @Override
+    void pay(double amount) {
+        System.out.println("Paid ₹" + amount + " using Credit Card (2.5% fee applied)");
+    }
+}
+
+class UPIPayment extends Payment {
+    @Override
+    void pay(double amount) {
+        System.out.println("Paid ₹" + amount + " using UPI (instant, no fee)");
+    }
+}
+
+class NetBankingPayment extends Payment {
+    @Override
+    void pay(double amount) {
+        System.out.println("Paid ₹" + amount + " using Net Banking (small transaction fee)");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Payment[] payments = {
+            new CreditCardPayment(),
+            new UPIPayment(),
+            new NetBankingPayment()
+        };
+        
+        double amount = 1499.00;
+        
+        for (Payment p : payments) {
+            p.pay(amount);
+        }
+    }
+}
