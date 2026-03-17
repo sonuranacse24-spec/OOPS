@@ -1,0 +1,61 @@
+abstract class Ride {
+    double distance;
+
+    Ride(double distance) {
+        this.distance = distance;
+    }
+
+    abstract double calculateFare();
+
+    void showFare() {
+        System.out.printf("Distance: %.1f km → Fare: ₹%.2f%n", distance, calculateFare());
+    }
+}
+
+class BikeRide extends Ride {
+    BikeRide(double distance) {
+        super(distance);
+    }
+
+    @Override
+    double calculateFare() {
+        return distance * 5;   // ₹5 per km
+    }
+}
+
+class AutoRide extends Ride {
+    AutoRide(double distance) {
+        super(distance);
+    }
+
+    @Override
+    double calculateFare() {
+        return distance * 8;   // ₹8 per km
+    }
+}
+
+class CarRide extends Ride {
+    CarRide(double distance) {
+        super(distance);
+    }
+
+    @Override
+    double calculateFare() {
+        return distance * 12;  // ₹12 per km
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Ride[] rides = new Ride[3];
+
+        rides[0] = new BikeRide(12.5);
+        rides[1] = new AutoRide(8.0);
+        rides[2] = new CarRide(15.75);
+
+        System.out.println("Ride Fare Calculation (Polymorphism):\n");
+        for (Ride r : rides) {
+            r.showFare();
+        }
+    }
+}
