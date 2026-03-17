@@ -1,0 +1,36 @@
+class employee {
+    int empno;
+    String ename;
+    float basic, hra, da, netpay;
+    
+    void havedata(int eno, String name, float bas, float hr, float d) {
+        this.empno = eno;
+        this.ename = name;
+        this.basic = bas;
+        this.hra = hr;
+        this.da = d;
+        Calculate();
+    }
+    
+    void Calculate() {
+        this.netpay = basic + hra + da;
+    }
+    
+    void dispdata() {
+        System.out.println("Employee No : " + empno);
+        System.out.println("Name        : " + ename);
+        System.out.println("Basic       : ₹" + basic);
+        System.out.println("HRA         : ₹" + hra);
+        System.out.println("DA          : ₹" + da);
+        System.out.println("Net Pay     : ₹" + netpay);
+        System.out.println("---------------------");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        employee e = new employee();
+        e.havedata(1001, "Sanjay", 45000, 9000, 12000);
+        e.dispdata();
+    }
+}
