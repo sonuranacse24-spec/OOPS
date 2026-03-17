@@ -1,0 +1,63 @@
+import java.util.ArrayList;
+
+class Book {
+    String title;
+    String author;
+    String isbn;
+    
+    Book(String title, String author, String isbn) {
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+    }
+    
+    @Override
+    public String toString() {
+        return "Book [Title=" + title + ", Author=" + author + ", ISBN=" + isbn + "]";
+    }
+}
+
+class Library {
+    private ArrayList<Book> books = new ArrayList<>();
+    
+    void addBook(Book book) {
+        books.add(book);
+        System.out.println("Book added: " + book);
+    }
+    
+    boolean removeBook(String isbn) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).isbn.equals(isbn)) {
+                System.out.println("Removed: " + books.remove(i));
+                return true;
+            }
+        }
+        System.out.println("Book with ISBN " + isbn + " not found.");
+        return false;
+    }
+    
+    void displayAllBooks() {
+        if (books.isEmpty()) {
+            System.out.println("Library is empty.");
+            return;
+        }
+        System.out.println("\n--- Library Books ---");
+        for (Book b : books) {
+            System.out.println(b);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Library lib = new Library();
+        
+        lib.addBook(new Book("Java Basics", "James Gosling", "ISBN001"));
+        lib.addBook(new Book("Python for Beginners", "Guido", "ISBN002"));
+        
+        lib.displayAllBooks();
+        
+        lib.removeBook("ISBN001");
+        lib.displayAllBooks();
+    }
+}
