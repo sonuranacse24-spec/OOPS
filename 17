@@ -1,0 +1,37 @@
+class Employee17 {
+    String name;
+    int id;
+
+    // static variable - shared by all objects
+    static int employeeCount = 0;
+
+    Employee17(String name, int id) {
+        this.name = name;
+        this.id = id;
+        employeeCount++;   // increment every time object is created
+    }
+
+    void display() {
+        System.out.println("ID: " + id + " | Name: " + name);
+    }
+
+    static void showTotalEmployees() {
+        System.out.println("Total employees created: " + employeeCount);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Creating employees...\n");
+
+        new Employee17("Vikas", 1001);
+        new Employee17("Pooja", 1002);
+        Employee17 e3 = new Employee17("Arjun", 1003);
+        new Employee17("Meera", 1004);
+
+        e3.display();   // just showing one object
+        System.out.println();
+
+        Employee17.showTotalEmployees();
+    }
+}
