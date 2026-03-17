@@ -1,0 +1,60 @@
+class Staff {
+    String name;
+
+    Staff(String name) {
+        this.name = name;
+    }
+
+    void work() {
+        System.out.println(name + " is working in the hospital.");
+    }
+}
+
+class Doctor extends Staff {
+    Doctor(String name) {
+        super(name);
+    }
+
+    @Override
+    void work() {
+        System.out.println(name + " (Doctor) → Diagnosing patients, performing surgeries.");
+    }
+}
+
+class Nurse extends Staff {
+    Nurse(String name) {
+        super(name);
+    }
+
+    @Override
+    void work() {
+        System.out.println(name + " (Nurse) → Assisting doctors, giving medicines, patient care.");
+    }
+}
+
+class Receptionist extends Staff {
+    Receptionist(String name) {
+        super(name);
+    }
+
+    @Override
+    void work() {
+        System.out.println(name + " (Receptionist) → Managing appointments, patient registration.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Staff[] staff = new Staff[4];
+
+        staff[0] = new Doctor("Dr. Anjali");
+        staff[1] = new Nurse("Snehal");
+        staff[2] = new Receptionist("Kavita");
+        staff[3] = new Staff("General Staff");
+
+        System.out.println("Hospital Staff Responsibilities:\n");
+        for (Staff s : staff) {
+            s.work();
+        }
+    }
+}
