@@ -1,0 +1,40 @@
+class Resort {
+    int RNo;
+    String Name;
+    float Charges;
+    int Days;
+    float Amount;
+    
+    void Getinfo(int rno, String name, float charges, int days) {
+        this.RNo = rno;
+        this.Name = name;
+        this.Charges = charges;
+        this.Days = days;
+    }
+    
+    float Compute() {
+        float total = Days * Charges;
+        if (total > 11000) {
+            total = total * 1.02f;
+        }
+        this.Amount = total;
+        return total;
+    }
+    
+    void DispInfo() {
+        System.out.println("Room No   : " + RNo);
+        System.out.println("Customer  : " + Name);
+        System.out.println("Charges/day: ₹" + Charges);
+        System.out.println("Days      : " + Days);
+        System.out.println("Total Amount: ₹" + Compute());
+        System.out.println("---------------------");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Resort r = new Resort();
+        r.Getinfo(205, "Amit Sharma", 1800, 7);
+        r.DispInfo();
+    }
+}
