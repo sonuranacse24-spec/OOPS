@@ -1,0 +1,49 @@
+abstract class Shape {
+    abstract double calculateArea();
+    
+    void displayInfo() {
+        System.out.println("This is a shape.");
+        System.out.println("Area = " + calculateArea());
+    }
+}
+
+class Circle extends Shape {
+    private double radius;
+    
+    Circle(double radius) {
+        this.radius = radius;
+    }
+    
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Rectangle extends Shape {
+    private double length;
+    private double breadth;
+    
+    Rectangle(double length, double breadth) {
+        this.length = length;
+        this.breadth = breadth;
+    }
+    
+    @Override
+    double calculateArea() {
+        return length * breadth;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Shape s = new Shape();   // ← Compilation error (good!)
+        
+        Shape c = new Circle(5.0);
+        Shape r = new Rectangle(4.5, 6.0);
+        
+        c.displayInfo();   // polymorphism
+        System.out.println();
+        r.displayInfo();
+    }
+}
