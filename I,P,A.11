@@ -1,0 +1,49 @@
+abstract class Shape11 {
+    abstract double calculateArea();
+    
+    void display() {
+        System.out.println("Shape Information:");
+        System.out.println("Area = " + calculateArea());
+    }
+}
+
+class Circle11 extends Shape11 {
+    double radius;
+    
+    Circle11(double r) {
+        this.radius = r;
+    }
+    
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Rectangle11 extends Shape11 {
+    double length, width;
+    
+    Rectangle11(double l, double w) {
+        this.length = l;
+        this.width = w;
+    }
+    
+    @Override
+    double calculateArea() {
+        return length * width;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape11[] shapes = {
+            new Circle11(4.5),
+            new Rectangle11(6, 8)
+        };
+        
+        for (Shape11 s : shapes) {
+            s.display();
+            System.out.println();
+        }
+    }
+}
