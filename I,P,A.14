@@ -1,0 +1,51 @@
+class Person {
+    String name;
+
+    Person(String name) {
+        this.name = name;
+    }
+
+    String role() {
+        return "General Person";
+    }
+}
+
+class Employee14 extends Person {
+    int id;
+
+    Employee14(String name, int id) {
+        super(name);
+        this.id = id;
+    }
+
+    @Override
+    String role() {
+        return "Company Employee";
+    }
+}
+
+class Manager14 extends Employee14 {
+    Manager14(String name, int id) {
+        super(name, id);
+    }
+
+    @Override
+    String role() {
+        return "Manager - Team Lead";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person[] people = new Person[3];
+
+        people[0] = new Person("Amit");
+        people[1] = new Employee14("Rohit", 101);
+        people[2] = new Manager14("Neha", 201);
+
+        System.out.println("Demonstrating Multilevel Inheritance & Polymorphism:\n");
+        for (Person p : people) {
+            System.out.println("Name: " + p.name + " → Role: " + p.role());
+        }
+    }
+}
