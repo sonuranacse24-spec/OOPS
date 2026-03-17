@@ -1,0 +1,42 @@
+class CARRENTAL {
+    int CarId;
+    String CarType;
+    float Rent;
+    
+    void GetCar(int id, String type) {
+        this.CarId = id;
+        this.CarType = type;
+        this.Rent = GetRent();
+    }
+    
+    private float GetRent() {
+        if (CarType.equalsIgnoreCase("Small")) {
+            return 1000;
+        } else if (CarType.equalsIgnoreCase("Van")) {
+            return 800;
+        } else if (CarType.equalsIgnoreCase("SUV")) {
+            return 2500;
+        } else {
+            return 0;
+        }
+    }
+    
+    void ShowCar() {
+        System.out.println("Car ID   : " + CarId);
+        System.out.println("Car Type : " + CarType);
+        System.out.println("Rent     : ₹" + Rent + " per day");
+        System.out.println("---------------------");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        CARRENTAL c1 = new CARRENTAL();
+        c1.GetCar(101, "SUV");
+        c1.ShowCar();
+        
+        CARRENTAL c2 = new CARRENTAL();
+        c2.GetCar(102, "Small");
+        c2.ShowCar();
+    }
+}
